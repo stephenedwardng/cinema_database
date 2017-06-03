@@ -2,7 +2,7 @@ require('pg')
 
 class SqlRunner
 
-  def self.run()
+  def self.run(sql)
     begin
       db = PG.connect({
         dbname: 'cinema',
