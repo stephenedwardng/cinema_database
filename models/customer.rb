@@ -62,4 +62,8 @@ class Customer
     return results.map { |results_hash| Ticket.new(results_hash)}
   end
 
+  def count_films_booked()
+    return films_booked.count()
+  end
+
 end
