@@ -19,6 +19,14 @@ class Customer
     @id = customer[0]['id'].to_i
   end
 
+  def find()
+    sql = "SELECT * FROM customers WHERE id = #{@id};"
+    results = SqlRunner.run(sql)
+    results_hash = results[0]
+    customer = Customer.new(results_hash)
+    return customer
+  end
+
   def self.all()
     sql = "SELECT * FROM customers;"
     customers = SqlRunner.run(sql)
