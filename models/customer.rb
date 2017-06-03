@@ -22,16 +22,17 @@ class Customer
   def find()
     sql = "SELECT * FROM customers WHERE id = #{@id};"
     results = SqlRunner.run(sql)
-    results_hash = results[0]
-    customer = Customer.new(results_hash)
-    return customer
+    # For reference / revision purposes
+    # results_hash = results[0]
+    # customer = Customer.new(results_hash)
+    # return customer
+    return results.map { |results_hash| Customer.new(results_hash)}
   end
 
   def self.all()
     sql = "SELECT * FROM customers;"
     customers = SqlRunner.run(sql)
-    result = customers.map {|customer| Customer.new(customer)}
-    return result
+    return customers.map {|customer| Customer.new(customer)}
   end
 
   def update()
