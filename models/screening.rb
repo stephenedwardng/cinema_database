@@ -49,16 +49,6 @@ class Screening
     SqlRunner.run(sql)
   end
 
-  # def most_popular_screening()
-  #   sql = "SELECT time 
-  #   FROM screenings
-  #   GROUP BY screenings.id
-  #   ORDER BY COUNT(time) DESC;"
-  #   results = SqlRunner.run(sql)
-  #   ordered_by_count = results.map { |results_hash| Screening.new(results_hash)}
-  #   return ordered_by_count.last()
-  # end
-
   def order_by_count_times()
     sql = "SELECT time 
     FROM screenings
@@ -74,6 +64,10 @@ class Screening
 
   def screening_tickets_count()
     return order_by_count_times.count()
+  end
+
+  def tickets_available()
+    screening_tickets_count() < @available_tickets
   end
 
 end

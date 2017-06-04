@@ -8,6 +8,7 @@ class Ticket
   attr_accessor :customer_funds
   attr_accessor :film_id
   attr_accessor :film_price
+  attr_accessor :screening
 
   def initialize(options)
     @id = options['id'].to_i
@@ -15,13 +16,14 @@ class Ticket
     @customer_funds = options['customer_funds'].to_i
     @film_id = options['film_id'].to_i
     @film_price = options['film_price'].to_i
+    @screening = options['screening']
   end
 
   def save()
-    sql = "INSERT INTO tickets (customer_id, film_id) VALUES ('#{@customer_id}', '#{@film_id}') RETURNING *;"
-    ticket = SqlRunner.run(sql)
-    @id = ticket[0]['id'].to_i
-    decrease_customer_funds()
+      sql = "INSERT INTO tickets (customer_id, film_id) VALUES ('#{@customer_id}', '#{@film_id}') RETURNING *;"
+      ticket = SqlRunner.run(sql)
+      @id = ticket[0]['id'].to_i
+      decrease_customer_funds()
   end
 
   def find()
