@@ -48,4 +48,14 @@ class Screening
     SqlRunner.run(sql)
   end
 
+  def self.most_popular_screening()
+    sql = "SELECT time 
+    FROM screenings
+    GROUP BY screenings.id
+    ORDER BY COUNT(time) DESC;"
+    results = SqlRunner.run(sql)
+    ordered_by_count = results.map { |results_hash| Screening.new(results_hash)}
+    return ordered_by_count.last()
+  end
+
 end

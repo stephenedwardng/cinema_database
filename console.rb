@@ -81,5 +81,13 @@ screening2 = Screening.new({
 
 screening2.save()
 
+screening3 = Screening.new({
+  'film_id' => film1.id,
+  'ticket_id' => ticket3.id,
+  'time' => '18:00'
+  })
+
+screening3.save()
+
 binding.pry
 nil

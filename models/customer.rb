@@ -51,7 +51,6 @@ class Customer
   end
 
   def films_booked()
-    # sql = "SELECT * FROM tickets WHERE customer_id = #{@id};"
     sql = "SELECT customers.name AS customer, films.title AS film FROM tickets 
     INNER JOIN customers
     ON customers.id = tickets.customer_id
