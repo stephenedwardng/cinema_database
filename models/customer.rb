@@ -22,10 +22,6 @@ class Customer
   def find()
     sql = "SELECT * FROM customers WHERE id = #{@id};"
     results = SqlRunner.run(sql)
-    # For reference / revision purposes
-    # results_hash = results[0]
-    # customer = Customer.new(results_hash)
-    # return customer
     return results.map { |results_hash| Customer.new(results_hash)}
   end
 

@@ -8,7 +8,6 @@ class Ticket
   attr_accessor :customer_funds
   attr_accessor :film_id
   attr_accessor :film_price
-  attr_accessor :screening
 
   def initialize(options)
     @id = options['id'].to_i
@@ -16,7 +15,6 @@ class Ticket
     @customer_funds = options['customer_funds'].to_i
     @film_id = options['film_id'].to_i
     @film_price = options['film_price'].to_i
-    @screening = options['screening']
   end
 
   def save()

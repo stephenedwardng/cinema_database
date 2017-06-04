@@ -17,9 +17,11 @@ class Screening
   end
 
   def save()
-    sql = "INSERT INTO screenings (time, film_id, ticket_id) VALUES ('#{@time}', '#{@film_id}', '#{@ticket_id}') RETURNING *;"
-    screening = SqlRunner.run(sql)
-    @id = screening[0]['id'].to_i
+    if tickets_available()
+      sql = "INSERT INTO screenings (time, film_id, ticket_id) VALUES ('#{@time}', '#{@film_id}', '#{@ticket_id}') RETURNING *;"
+      screening = SqlRunner.run(sql)
+      @id = screening[0]['id'].to_i
+    end
   end
 
   def find()
